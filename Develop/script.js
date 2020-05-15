@@ -1,5 +1,17 @@
-// Assignment code here
+/*
+if password button is clicked 
+generate a password that is 8 chars in length at random
+*/
 
+var characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !#$%&'()*+,-./:;<=>?@[]^_`{|}~"
+
+var generatePassword = function() {
+  var password = '';
+  for (var i = 0; i < 8; i++) {
+    password += characters[Math.floor(Math.random() * characters.length)];
+  }
+  return password;
+}
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
