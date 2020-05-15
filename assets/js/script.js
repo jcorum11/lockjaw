@@ -13,16 +13,30 @@ if password button is clicked
       if no only use characterPool
 */
 
-var characterPool = "abcdefghijklmnopqrstuvwxyz"
-var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var numbers = "0123456789"
-var specialChars = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~"
+
 
 // generate password string
 var generatePassword = function() {
+  var characterPool = "abcdefghijklmnopqrstuvwxyz"
+  var uppercasePool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  var numbersPool = "0123456789"
+  var specialCharsPool = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~"
   var password = '';
-  var numCharacters = parseInt(window.prompt("How many characters do you want in your password?"));
-  for (var i = 0; i < numCharacters; i++) {
+  // user inputs
+  var askNumCharacters = parseInt(window.prompt("How many characters do you want in your password?"));
+  var askUppercase = confirm("Do you want UPPERCASE LETTERS in your password?");
+  var askNumbers = confirm("Do you want NUMBERS in your password?");
+  var askSpecialChars = confirm("Do you want SPECIAL CHARACTERS in your password?")
+  if (askUppercase) {
+    characterPool += uppercasePool;
+  }
+  if (askNumbers) {
+    characterPool += numbersPool;
+  }
+  if (askSpecialChars) {
+    characterPool += specialCharsPool;
+  }
+  for (var i = 0; i < askNumCharacters; i++) {
     password += characterPool[Math.floor(Math.random() * characterPool.length)];
   }
   return password;
