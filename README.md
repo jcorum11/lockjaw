@@ -9,7 +9,7 @@ A trenchant password generator
 * JavaScript
 
 ## Website
-[lockjaw](https://jcorum11.github.io/lockjaw/)
+[Lockjaw Site](https://jcorum11.github.io/lockjaw/)
 
 ## Contribution
 Made with ❤️ by Jake
