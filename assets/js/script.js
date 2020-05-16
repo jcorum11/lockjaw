@@ -15,7 +15,7 @@ var generatePassword = function() {
   // user inputs
   var askNumCharacters = "";
   // while loop to check for falsy or negative inputs (non-numeric values passed to Number() will return NaN)
-  while (!askNumCharacters || askNumCharacters < 0) {
+  while (!askNumCharacters || askNumCharacters < 8 || askNumCharacters > 128) {
     askNumCharacters = Number(window.prompt("How many characters do you want in your password?"));
   }
   var askUppercase = confirm("Do you want UPPERCASE LETTERS in your password?");
