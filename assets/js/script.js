@@ -5,25 +5,40 @@ var generatePassword = function() {
   
 
   // character pools to be added together based on user input
-  var mainCharacterPool = "abcdefghijklmnopqrstuvwxyz"
-  var uppercasePool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var numberPool = "0123456789"
-  var specialCharPool = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~"
+  var mainCharacterPool = "";
+  var lowercasePool = "abcdefghijklmnopqrstuvwxyz"
+  var uppercasePool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var numberPool = "0123456789";
+  var specialCharPool = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~";
   var password = '';
   
   
-  // user inputs
-  var askNumCharacters = "";
-  // while loop to check for falsy or negative inputs (non-numeric values passed to Number() will return NaN)
+  // prompt user to select character type, checks for at least one selection
+  while (true) {
+    var askLowercase = confirm("Do you want LOWERCASE LETTERS in your password?");
+    var askUppercase = confirm("Do you want UPPERCASE LETTERS in your password?");
+    var askNumbers = confirm("Do you want NUMBERS in your password?");
+    var askSpecialChars = confirm("Do you want SPECIAL CHARACTERS in your password?");
+    if (askLowercase || askUppercase || askNumbers || askSpecialChars) {
+      break;
+    }
+    else {
+      alert("Have you ever made a password before??? 🤦‍♂️");
+    }
+  };
+
+
+  // prompt user for password length, checks for falsy or negative inputs (non-numeric values passed to Number() will return NaN)
   while (!askNumCharacters || askNumCharacters < 8 || askNumCharacters > 128) {
+    var askNumCharacters = "";
     askNumCharacters = Number(window.prompt("How many characters do you want in your password?"));
   }
-  var askUppercase = confirm("Do you want UPPERCASE LETTERS in your password?");
-  var askNumbers = confirm("Do you want NUMBERS in your password?");
-  var askSpecialChars = confirm("Do you want SPECIAL CHARACTERS in your password?")
 
   
-  // what pools to add to mainCharacterPool based on user input
+  // add pools to mainCharacterPool based on user input
+  if (askLowercase) {
+    mainCharacterPool += lowercasePool;
+  }
   if (askUppercase) {
     mainCharacterPool += uppercasePool;
   }
@@ -34,8 +49,9 @@ var generatePassword = function() {
     mainCharacterPool += specialCharPool;
   }
 
+
   
-  // loop that randomly pulls characters from mainCharacterPool
+  // randomly pull characters from mainCharacterPool
   for (var i = 0; i < askNumCharacters; i++) {
     password += mainCharacterPool[Math.floor(Math.random() * mainCharacterPool.length)];
   }
