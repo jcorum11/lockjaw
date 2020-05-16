@@ -1,49 +1,57 @@
-/*
-if password button is clicked 
-  ask user how many characters they want (between 8 and 128 chars)
-    put input into for loop
-  ask user if they want uppercase letters
-    if yes then add characterPool and uppercase and pull from that
-    if no only use characterPool
-  ask user if they want numbers 
-    if yes then add characterPool and numbers and pull from that
-    if no only use characterPool
-  ask user if they want special characters
-      if yes then add characterPool and specialChars and pull from that
-      if no only use characterPool
-*/
 
 
-
-// generate password string
+// function to generate password string
 var generatePassword = function() {
-  var characterPool = "abcdefghijklmnopqrstuvwxyz"
+  
+
+  // character pools to be added together based on user input
+  var mainCharacterPool = "abcdefghijklmnopqrstuvwxyz"
   var uppercasePool = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  var numbersPool = "0123456789"
-  var specialCharsPool = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~"
+  var numberPool = "0123456789"
+  var specialCharPool = " !#$%&'()*+,-./:;<=>?@[]^_`{|}~"
   var password = '';
+  
+  
   // user inputs
-  var askNumCharacters = parseInt(window.prompt("How many characters do you want in your password?"));
+  var askNumCharacters = "";
+  // while loop to check for falsy or negative inputs (non-numeric values passed to Number() will return NaN)
+  while (!askNumCharacters || askNumCharacters < 0) {
+    askNumCharacters = Number(window.prompt("How many characters do you want in your password?"));
+  }
   var askUppercase = confirm("Do you want UPPERCASE LETTERS in your password?");
   var askNumbers = confirm("Do you want NUMBERS in your password?");
   var askSpecialChars = confirm("Do you want SPECIAL CHARACTERS in your password?")
+
+  
+  // what pools to add to mainCharacterPool based on user input
   if (askUppercase) {
-    characterPool += uppercasePool;
+    mainCharacterPool += uppercasePool;
   }
   if (askNumbers) {
-    characterPool += numbersPool;
+    mainCharacterPool += numberPool;
   }
   if (askSpecialChars) {
-    characterPool += specialCharsPool;
+    mainCharacterPool += specialCharPool;
   }
+
+  
+  // loop that randomly pulls characters from mainCharacterPool
   for (var i = 0; i < askNumCharacters; i++) {
-    password += characterPool[Math.floor(Math.random() * characterPool.length)];
+    password += mainCharacterPool[Math.floor(Math.random() * mainCharacterPool.length)];
   }
   return password;
-};
+
+
+}; // end of function
+
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+
+
+
 
 // Write password to the #password input
 function writePassword() {
@@ -53,6 +61,9 @@ function writePassword() {
   passwordText.value = password;
 
 };
+
+
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
