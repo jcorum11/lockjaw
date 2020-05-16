@@ -15,10 +15,10 @@ var generatePassword = function() {
   
   // prompt user to select character type, checks for at least one selection
   while (true) {
-    var askLowercase = confirm("Do you want LOWERCASE LETTERS in your password?");
-    var askUppercase = confirm("Do you want UPPERCASE LETTERS in your password?");
-    var askNumbers = confirm("Do you want NUMBERS in your password?");
-    var askSpecialChars = confirm("Do you want SPECIAL CHARACTERS in your password?");
+    var askLowercase = confirm("Do you want to use LOWERCASE LETTERS?");
+    var askUppercase = confirm("Do you want to use UPPERCASE LETTERS?");
+    var askNumbers = confirm("Do you want to use NUMBERS?");
+    var askSpecialChars = confirm("Do you want to use SPECIAL CHARACTERS?");
     if (askLowercase || askUppercase || askNumbers || askSpecialChars) {
       break;
     }
@@ -30,7 +30,7 @@ var generatePassword = function() {
   
   // prompt user for password length, checks for falsy or negative inputs (non-numeric values passed to Number() will return NaN)
   while (true) {
-    askNumCharacters = Number(window.prompt("How many characters do you want in your password?"));
+    askNumCharacters = Number(window.prompt("How many characters do you to use?"));
     if (askNumCharacters && askNumCharacters > 8 && askNumCharacters < 128) {
       break;
     }
