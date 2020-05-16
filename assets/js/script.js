@@ -27,26 +27,24 @@ var generatePassword = function() {
     }
   };
 
-
+  
   // prompt user for password length, checks for falsy or negative inputs (non-numeric values passed to Number() will return NaN)
   while (true) {
-    var askNumCharacters = "";
+    askNumCharacters = Number(window.prompt("How many characters do you want in your password?"));
     if (askNumCharacters && askNumCharacters > 8 && askNumCharacters < 128) {
       break;
     }
     else if (!askNumCharacters) {
-      alert("If you tried at things maybe people would like you better 😠");
-      askNumCharacters = Number(window.prompt("How many characters do you want in your password?"));
+      alert("maybe use just numbers 😒");
     }
-    else if (askNumCharacters < 8) {
-      alert("I don't know if you're aware, hackers love it when you make new accounts 😫");
-      askNumCharacters = Number(window.prompt("How many characters do you want in your password?"));
+    else if (askNumCharacters <= 8) {
+      alert("try using more than 8 numbers 🙄");
     }
-    else if (askNumCharacters < 128) {
-      alert("I hope you fell asleep on your keyboard because you're input was embarassing 😪");
+    else if (askNumCharacters > 128) {
+      alert("Yeah, less than 128 characters bud 😑");
     }
     else {
-      alert("You did it! You hit rock bottom! There's nowhere else to go but up from here 😁")
+      alert("I don't know what you did wrong, and I don't think I really care at this point 😁")
     }
   }
 
