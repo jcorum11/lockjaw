@@ -14,3 +14,4 @@ A trenchant password generator
 ## Contribution
 Made with ❤️ by Jake
 
+![Lockjaw website](./lockjaw-site.png)
